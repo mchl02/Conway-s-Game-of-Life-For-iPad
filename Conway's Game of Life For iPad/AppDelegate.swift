@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Conway's Game of Life For iPad
-//
-//  Created by Jayesh Ramana on 11/12/18.
-//  Copyright © 2018 Jayesh Ramana. All rights reserved.
-//
 
 import UIKit
 
@@ -15,7 +8,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        guard let splitViewController = window?.rootViewController as? UISplitViewController,
+            let leftNavController = splitViewController.viewControllers.first as? UINavigationController,
+            let masterViewController = leftNavController.topViewController as? Templates,
+            let detailViewController = splitViewController.viewControllers.last as? Grid
+            else { fatalError() }
+        
+        let firstColony = masterViewController.cellsAlive.first
+        detailViewController.toggle = Set(firstColony!)
+        
+        masterViewController.delegate = detailViewController
+        
         return true
     }
 
