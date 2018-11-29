@@ -4,18 +4,27 @@ import UIKit
 
 let colonySize = 20
 var colony = Colony(colonySize)
-
+var wrapperswitch = false
 class Grid: UIViewController {
     
     var grid = UIView()
     let border: CGFloat = 50
 
     var cells = [UIView()]
+    var tick = 0
+    var timeBoi: Timer? = nil
+   
+    
+    var interval: Float {
+        return speed.minimumValue
+    }
     
     var toggle = Set<Coor>()
-    
+    @IBOutlet weak var wrapper: UISwitch!
     @IBOutlet weak var speed: UISlider!
     @IBOutlet weak var speedLabel: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +57,14 @@ class Grid: UIViewController {
         
         grid.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         grid.addGestureRecognizer(CellPanGestureRecognizer(target: self, action: #selector(handlePan)))
+        
+        
+        createTimer()
+        speed.minimumValue = 0
+        speed.maximumValue = 10
+        
+        
+        
     }
     
     func refresh() {
@@ -136,7 +153,19 @@ class Grid: UIViewController {
             print("\(i.row), \(i.column)")
         }
     }
-    
+    func createTimer() {
+        if speed.value>0.00{
+            timeBoi = Timer.scheduledTimer(withTimeInterval: TimeInterval(speed.value), repeats: true, block: {_ in self.timerTick()})
+        }
+        
+    }
+    func timerTick() {
+        tick += 1
+        if Float(tick) > interval {
+            tick = 0
+            evolve()
+        }
+    }
     @objc func evolve() {
         colony.evolve()
         refresh()
@@ -153,9 +182,20 @@ class Grid: UIViewController {
         nf.maximumFractionDigits = 1
         return nf
     }()
+    @IBAction func switchToggled(_ sender: UISwitch) {
+        changeText()
+    }
     
+    func changeText() {
+        if wrapper.isOn {
+            wrapperswitch = true
+        } else {
+            wrapperswitch = false
+        }
+    }
     @IBAction func speedChanged(_ sender: Any) {
         speedLabel.text = numberFormatter.string(from: NSNumber(value: speed.value))! + "x"
+        createTimer() 
     }
     //var timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(evolve), userInfo: nil, repeats: true)
 }

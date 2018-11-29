@@ -25,13 +25,6 @@
                                     <action selector="play:" destination="ovn-JM-yHh" eventType="touchUpInside" id="6jh-s1-T9m"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-Af-0Wc">
-                                <rect key="frame" x="203" y="708" width="45" height="30"/>
-                                <state key="normal" title="Evolve"/>
-                                <connections>
-                                    <action selector="step:" destination="ovn-JM-yHh" eventType="touchUpInside" id="Bld-lF-10K"/>
-                                </connections>
-                            </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="dXI-Cw-dD7">
                                 <rect key="frame" x="401.5" y="708" width="254" height="31"/>
                                 <constraints>
@@ -41,8 +34,28 @@
                                     <action selector="speedChanged:" destination="ovn-JM-yHh" eventType="valueChanged" id="1n3-HL-CG4"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lF9-9e-noR">
-                                <rect key="frame" x="374.5" y="717" width="19" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lF9-9e-noR">
+                                <rect key="frame" x="374" y="713" width="22" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-Af-0Wc">
+                                <rect key="frame" x="180" y="708" width="45" height="30"/>
+                                <state key="normal" title="Evolve"/>
+                                <connections>
+                                    <action selector="step:" destination="ovn-JM-yHh" eventType="touchUpInside" id="Bld-lF-10K"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1M9-Vf-WjE">
+                                <rect key="frame" x="315" y="707" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchToggled:" destination="ovn-JM-yHh" eventType="valueChanged" id="tcb-is-ARK"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wrapping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmG-aq-6Tw">
+                                <rect key="frame" x="233" y="720" width="74" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -52,7 +65,10 @@
                         <constraints>
                             <constraint firstItem="Bd0-8t-ASs" firstAttribute="bottom" secondItem="GXY-8c-aj8" secondAttribute="bottom" constant="30" id="2Hz-Up-O0F"/>
                             <constraint firstItem="Bd0-8t-ASs" firstAttribute="bottom" secondItem="lF9-9e-noR" secondAttribute="bottom" constant="30" id="7dH-uv-IDV"/>
+                            <constraint firstItem="EmG-aq-6Tw" firstAttribute="top" secondItem="Bd0-8t-ASs" secondAttribute="top" constant="693" id="Ixc-8v-Z4h"/>
+                            <constraint firstItem="Bd0-8t-ASs" firstAttribute="bottom" secondItem="EmG-aq-6Tw" secondAttribute="bottom" constant="34" id="LWC-X3-5S0"/>
                             <constraint firstItem="GXY-8c-aj8" firstAttribute="leading" secondItem="Bd0-8t-ASs" secondAttribute="leading" constant="50" id="Mbr-Cd-5Za"/>
+                            <constraint firstItem="EmG-aq-6Tw" firstAttribute="leading" secondItem="dJG-Af-0Wc" secondAttribute="trailing" constant="15" id="Nc0-4g-3EZ"/>
                             <constraint firstItem="Bd0-8t-ASs" firstAttribute="trailing" secondItem="dXI-Cw-dD7" secondAttribute="trailing" constant="50" id="Nlc-Fs-qeb"/>
                             <constraint firstItem="Bd0-8t-ASs" firstAttribute="bottom" secondItem="dJG-Af-0Wc" secondAttribute="bottom" constant="30" id="Yv3-OI-s5s"/>
                             <constraint firstItem="dXI-Cw-dD7" firstAttribute="leading" secondItem="lF9-9e-noR" secondAttribute="trailing" constant="10" id="fdo-iC-qEK"/>
@@ -64,6 +80,7 @@
                     <connections>
                         <outlet property="speed" destination="dXI-Cw-dD7" id="a5y-tl-ogY"/>
                         <outlet property="speedLabel" destination="lF9-9e-noR" id="Y8y-DQ-wiP"/>
+                        <outlet property="wrapper" destination="1M9-Vf-WjE" id="asQ-Ke-3dD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSJ-d0-Zrv" userLabel="First Responder" sceneMemberID="firstResponder"/>

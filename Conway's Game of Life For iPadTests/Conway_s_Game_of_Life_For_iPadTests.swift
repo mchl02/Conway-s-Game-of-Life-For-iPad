@@ -1,10 +1,3 @@
-//
-//  Conway_s_Game_of_Life_For_iPadTests.swift
-//  Conway's Game of Life For iPadTests
-//
-//  Created by Jayesh Ramana on 11/12/18.
-//  Copyright © 2018 Jayesh Ramana. All rights reserved.
-//
 
 import XCTest
 @testable import Conway_s_Game_of_Life_For_iPad

@@ -1,11 +1,16 @@
 
 
 import Foundation
+import UIKit
 
 class Colony: CustomStringConvertible {
     var s = Set<Coor>()
     var colonySize: Int
     var gen = 0
+    
+    
+   
+   
     
     init(_ colonySize: Int) {
         self.colonySize = colonySize
@@ -25,6 +30,18 @@ class Colony: CustomStringConvertible {
     
     func neighboring(xCoor: Int, yCoor: Int) -> Set<Coor> {
         var neighbor = Set<Coor>()
+
+        if wrapperswitch{
+            neighbor.insert(Coor((xCoor-1+colonySize)%colonySize, (yCoor-1+colonySize)%colonySize))
+            neighbor.insert(Coor(xCoor, (yCoor-1+colonySize)%colonySize))
+            neighbor.insert(Coor((xCoor+1+colonySize)%colonySize, (yCoor-1+colonySize)%colonySize))
+            neighbor.insert(Coor((xCoor-1+colonySize)%colonySize, yCoor))
+            neighbor.insert(Coor((xCoor+1+colonySize)%colonySize, yCoor))
+            neighbor.insert(Coor((xCoor-1+colonySize)%colonySize, (yCoor+1+colonySize)%colonySize))
+            neighbor.insert(Coor(xCoor, (yCoor+1+colonySize)%colonySize))
+            neighbor.insert(Coor((xCoor+1+colonySize)%colonySize, (yCoor+1+colonySize)%colonySize))
+            return neighbor
+        }
         //checks around
         neighbor.insert(Coor(xCoor-1, yCoor-1))
         neighbor.insert(Coor(xCoor, yCoor-1))
