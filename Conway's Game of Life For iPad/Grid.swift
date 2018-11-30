@@ -12,7 +12,13 @@ class Grid: UIViewController {
 
     var cells = [UIView()]
     var tick = 0
-    var timeBoi: Timer? = nil
+    var time: Timer? = nil{
+        willSet{
+            time?.invalidate()
+        }
+    }
+    
+    
    
     
     var interval: Float {
@@ -61,7 +67,7 @@ class Grid: UIViewController {
         
         createTimer()
         speed.minimumValue = 0
-        speed.maximumValue = 10
+        speed.maximumValue = 50
         
         
         
@@ -153,9 +159,18 @@ class Grid: UIViewController {
             print("\(i.row), \(i.column)")
         }
     }
+    
+    
+    
     func createTimer() {
         if speed.value>0.00{
-            timeBoi = Timer.scheduledTimer(withTimeInterval: TimeInterval(speed.value), repeats: true, block: {_ in self.timerTick()})
+            if time == nil{
+                  print(speed.value)
+                  time = Timer.scheduledTimer(withTimeInterval: TimeInterval(4-speed.value), repeats: true, block: {_ in self.timerTick()})
+            }
+          
+        }else{
+            time = nil
         }
         
     }
@@ -195,7 +210,7 @@ class Grid: UIViewController {
     }
     @IBAction func speedChanged(_ sender: Any) {
         speedLabel.text = numberFormatter.string(from: NSNumber(value: speed.value))! + "x"
-        createTimer() 
+        createTimer()
     }
     //var timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(evolve), userInfo: nil, repeats: true)
 }
