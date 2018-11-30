@@ -65,10 +65,9 @@ class Grid: UIViewController {
         grid.addGestureRecognizer(CellPanGestureRecognizer(target: self, action: #selector(handlePan)))
         
         
-        createTimer()
         speed.minimumValue = 0
-        speed.maximumValue = 50
-        
+        speed.maximumValue = 10
+        createTimer(x: speed!.value)
         
         
     }
@@ -162,22 +161,19 @@ class Grid: UIViewController {
     
     
     
-    func createTimer() {
+    func createTimer(x: Float) {
         if speed.value>0.00{
-            if time == nil{
-                  print(speed.value)
-                  time = Timer.scheduledTimer(withTimeInterval: TimeInterval(4-speed.value), repeats: true, block: {_ in self.timerTick()})
-            }
-          
+            print(x)
+            time = Timer.scheduledTimer(withTimeInterval: TimeInterval(3-speed.value), repeats: true, block: {_ in self.timerTick()})
         }else{
             time = nil
         }
         
     }
     func timerTick() {
+        tick = 0
         tick += 1
         if Float(tick) > interval {
-            tick = 0
             evolve()
         }
     }
@@ -210,7 +206,7 @@ class Grid: UIViewController {
     }
     @IBAction func speedChanged(_ sender: Any) {
         speedLabel.text = numberFormatter.string(from: NSNumber(value: speed.value))! + "x"
-        createTimer()
+        createTimer(x: speed.value)
     }
     //var timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(evolve), userInfo: nil, repeats: true)
 }
