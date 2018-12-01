@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44260366219DE926000E219F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44260365219DE926000E219F /* Grid.swift */; };
 		44260368219DEA70000E219F /* Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44260367219DEA70000E219F /* Split.swift */; };
 		4435F6E2219A2ECC001FB6F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4435F6E1219A2ECC001FB6F7 /* AppDelegate.swift */; };
 		4435F6E4219A2ECC001FB6F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4435F6E3219A2ECC001FB6F7 /* ViewController.swift */; };
@@ -20,6 +19,7 @@
 		4449AACD21A3358F00FE7D8C /* Colony.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4449AACC21A3358F00FE7D8C /* Colony.swift */; };
 		4452450121A44D880063612B /* Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4452450021A44D880063612B /* Templates.swift */; };
 		44F5172F21A8EDD1007C7D0A /* CellPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F5172E21A8EDD1007C7D0A /* CellPanGesture.swift */; };
+		5464BA9521B1CDAE004258F2 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5464BA9421B1CDAD004258F2 /* Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		44260365219DE926000E219F /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		44260367219DEA70000E219F /* Split.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Split.swift; sourceTree = "<group>"; };
 		4435F6DE219A2ECC001FB6F7 /* Conway's Game of Life For iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Conway's Game of Life For iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4435F6E1219A2ECC001FB6F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		4449AACC21A3358F00FE7D8C /* Colony.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colony.swift; sourceTree = "<group>"; };
 		4452450021A44D880063612B /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
 		44F5172E21A8EDD1007C7D0A /* CellPanGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPanGesture.swift; sourceTree = "<group>"; };
+		5464BA9421B1CDAD004258F2 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../../Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +113,10 @@
 				4435F6E3219A2ECC001FB6F7 /* ViewController.swift */,
 				44260367219DEA70000E219F /* Split.swift */,
 				4452450021A44D880063612B /* Templates.swift */,
-				44260365219DE926000E219F /* Grid.swift */,
 				44F5172E21A8EDD1007C7D0A /* CellPanGesture.swift */,
 				4449AACA21A3355400FE7D8C /* Coor.swift */,
 				4449AACC21A3358F00FE7D8C /* Colony.swift */,
+				5464BA9421B1CDAD004258F2 /* Grid.swift */,
 				4435F6E5219A2ECC001FB6F7 /* Main.storyboard */,
 				4435F6E8219A2ECF001FB6F7 /* Assets.xcassets */,
 				4435F6EA219A2ECF001FB6F7 /* LaunchScreen.storyboard */,
@@ -277,10 +277,10 @@
 				4435F6E4219A2ECC001FB6F7 /* ViewController.swift in Sources */,
 				4435F6E2219A2ECC001FB6F7 /* AppDelegate.swift in Sources */,
 				44260368219DEA70000E219F /* Split.swift in Sources */,
+				5464BA9521B1CDAE004258F2 /* Grid.swift in Sources */,
 				4449AACB21A3355400FE7D8C /* Coor.swift in Sources */,
 				4452450121A44D880063612B /* Templates.swift in Sources */,
 				44F5172F21A8EDD1007C7D0A /* CellPanGesture.swift in Sources */,
-				44260366219DE926000E219F /* Grid.swift in Sources */,
 				4449AACD21A3358F00FE7D8C /* Colony.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

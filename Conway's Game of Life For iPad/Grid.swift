@@ -11,7 +11,7 @@ class Grid: UIViewController {
     let border: CGFloat = 50
 
     var cells = [UIView()]
-    var tick = 0
+    
     var time: Timer? = nil{
         willSet{
             time?.invalidate()
@@ -21,9 +21,7 @@ class Grid: UIViewController {
     
    
     
-    var interval: Float {
-        return speed.minimumValue
-    }
+    
     
     var toggle = Set<Coor>()
     @IBOutlet weak var wrapper: UISwitch!
@@ -67,7 +65,7 @@ class Grid: UIViewController {
         
         speed.minimumValue = 0
         speed.maximumValue = 10
-        createTimer(x: speed!.value)
+        functionTimer()
         
         
     }
@@ -161,19 +159,19 @@ class Grid: UIViewController {
     
     
     
-    func createTimer(x: Float) {
+    func functionTimer() {
         if speed.value>0.00{
-            print(x)
-            time = Timer.scheduledTimer(withTimeInterval: TimeInterval(3-speed.value), repeats: true, block: {_ in self.timerTick()})
+            
+            time = Timer.scheduledTimer(withTimeInterval: TimeInterval(3-speed.value), repeats: true, block: {_ in self.timerFire()})
         }else{
             time = nil
         }
         
     }
-    func timerTick() {
-        tick = 0
-        tick += 1
-        if Float(tick) > interval {
+    func timerFire() {
+        var fire = 0
+        fire += 1
+        if Float(fire) > speed.minimumValue {
             evolve()
         }
     }
@@ -194,10 +192,10 @@ class Grid: UIViewController {
         return nf
     }()
     @IBAction func switchToggled(_ sender: UISwitch) {
-        changeText()
+        changeWrapper()
     }
     
-    func changeText() {
+    func changeWrapper() {
         if wrapper.isOn {
             wrapperswitch = true
         } else {
@@ -206,9 +204,9 @@ class Grid: UIViewController {
     }
     @IBAction func speedChanged(_ sender: Any) {
         speedLabel.text = numberFormatter.string(from: NSNumber(value: speed.value))! + "x"
-        createTimer(x: speed.value)
+        functionTimer()
     }
-    //var timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(evolve), userInfo: nil, repeats: true)
+    
 }
 
 
